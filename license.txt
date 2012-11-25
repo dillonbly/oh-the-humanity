@@ -1,0 +1,8 @@
+This web app was inspired by Cards Against Humanity, available at http://www.cardsagainsthumanity.com/.
+The game content is property of Cards Against Humanity LLC. and used according
+to the Creative Commons BY-NC-SA 2.0 license.
+
+This app is available under the Creative Commons BY-NC-SA 2.0 license.
+http://creativecommons.org/licenses/by-nc-sa/2.0/
+
+Cards Against Humanity is a trademark of Cards Against Humanity LLC.  
