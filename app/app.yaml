@@ -9,20 +9,14 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /game\.html
+- url: /game
   static_files: game.html
   upload: game\.html
 
-- url: /css/game\.css
-  static_files: css/game.css
-  upload: css/game\.css
+- url: /css/(.*)
+  static_files: css/\1
+  upload: css/(.*)
 
-- url: .*
-  script: main.app
-
-libraries:
-- name: webapp2
-  version: "2.5.1"
 - url: .*
   script: main.app
 
