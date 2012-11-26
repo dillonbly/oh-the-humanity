@@ -13,10 +13,6 @@ handlers:
   static_files: html/game.html
   upload: html/game.html
 
-- url: /index.html
-  static_files: html/index.html
-  upload: html/index.html
-
 - url: /css/(.*)
   static_files: css/\1
   upload: css/(.*)
