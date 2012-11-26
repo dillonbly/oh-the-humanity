@@ -9,13 +9,25 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /game
-  static_files: game.html
-  upload: game\.html
+- url: /(.*\.html)
+  static_files: html/\1
+  upload: html/(.*)
 
 - url: /css/(.*)
   static_files: css/\1
   upload: css/(.*)
+
+- url: /js/(.*)
+  static_files: js/\1
+  upload: js/(.*)
+
+- url: /lib/angular/(.*)
+  static_files: lib/angular/\1
+  upload: lib/angular/(.*)
+
+- url: /partials/(.*)
+  static_files: partials/\1
+  upload: partials/(.*)
 
 - url: .*
   script: main.app
