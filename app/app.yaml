@@ -9,9 +9,9 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /(game|join_game|create_game)
+- url: /(game|join_game)
   static_files: html/\1.html
-  upload: html/(game|join_game|create_game).html
+  upload: html/(game|join_game).html
 
 - url: /css/(.*)
   static_files: css/\1
@@ -29,18 +29,11 @@ handlers:
   static_files: partials/\1
   upload: partials/(.*)
 
-- url: /creategame
-  script: create_game_handler.app
-
 - url: /joingame
   script: join_game_handler.app
 
 - url: /gamestate
   script: game_state_handler.app
-
-- url: /
-  static_files: html/welcome.html
-  upload: html/welcome.html
 
 libraries:
 - name: webapp2

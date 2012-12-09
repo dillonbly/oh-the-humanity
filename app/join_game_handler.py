@@ -23,14 +23,20 @@ class JoinGameHandler(webapp2.RequestHandler):
     game = db.GqlQuery("SELECT * FROM Games WHERE name = :1", game_name).get()
 
     if not game:
-      self.response.write('Game not found')
-      return
- 
-    # TODO(dillonbly): Detect if the user is joining a second time.
+      game = createGame(game_name)
+
+    joinGame(game_name)
+
+    self.response.redirect('/game.html#gameid=%s'.format(game.id()))
+
+  def joinGame(game_name):
     player = Player(user=user, game=game)
     player.put()
 
-    self.response.redirect('/game.html#gameid=%s'.format(game.id()))
+  def createGame(game_name):
+    game = Game(name=game_name)
+    game.put()
+    return game
  
 app = webapp2.WSGIApplication([
   ('/joingame', JoinGameHandler)
