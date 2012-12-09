@@ -2,7 +2,7 @@ application: oh-the-humanity
 version: 1
 runtime: python27
 api_version: 1
-threadsafe: no
+threadsafe: yes
 
 handlers:
 - url: /favicon\.ico
@@ -12,6 +12,7 @@ handlers:
 - url: /(game)
   static_files: html/\1.html
   upload: html/(game).html
+  login: required
 
 - url: /css/(.*)
   static_files: css/\1
@@ -31,13 +32,16 @@ handlers:
 
 - url: /joingame
   script: join_game_handler.app
+  login: required
 
 - url: /gamestate
   script: game_state_handler.app
+  login: required
 
 - url: /
   static_files: html/join_game.html
   upload: html/join_game.html
+  login: required
 
 libraries:
 - name: webapp2
