@@ -9,7 +9,7 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /(game|join_game|create_game).html
+- url: /(game|join_game|create_game)
   static_files: html/\1.html
   upload: html/(game|join_game|create_game).html
 
