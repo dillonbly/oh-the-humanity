@@ -7,8 +7,7 @@ class GameStateHandler(webapp2.RequestHandler):
   def get(self):
     game_name = self.request.get('game_name')
 
-    # TODO(dillonbly) Get gamestate for user
-    #game = db.GqlQuery("SELECT * FROM Games WHERE name = :1", game_name).get()
+    game = db.GqlQuery("SELECT * FROM Games WHERE name = :1", game_name).get()
 
     players = []
     current_hand = []
