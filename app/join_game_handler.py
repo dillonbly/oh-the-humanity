@@ -3,6 +3,7 @@ import logging
 import webapp2
 from models import Player, Game
 
+from google.appengine.api import channel
 from google.appengine.api import users
 from google.appengine.ext import db
 
@@ -35,6 +36,7 @@ class JoinGameHandler(webapp2.RequestHandler):
 
     token = channel.create_channel("{0}:{1}".format(game_name, user.user_id()))
 
+    logging.info("/game#?gamename={0}&token={1}".format(game.key().id_or_name(), token))
     self.redirect("/game#?gamename={0}&token={1}".format(game.key().id_or_name(), token))
 
 

@@ -2,18 +2,24 @@
 
 /* Controllers */
 
-function GameCtrl($scope, $location) {
-  alert($location.search.token);
-  channel = new goog.appengine.Channel($location.search.token);
-  socket = channel.open();
-  socket.onopen = console.log;
-  socket.onmessage = console.log;
-  socket.onerror = console.log;
-  socket.onclose = console.log;
+function GameController($scope, $location) {
+  var channel = new goog.appengine.Channel($location.search().token);
+  var socket = channel.open();
+  socket.onopen = function() { console.log('Channel opened'); }
+  socket.onmessage = function(m) { console.log('Message: ' + m ); };
+  socket.onerror = function(err) { console.log('Error: ' + err ); };
+  socket.onclose = function() { console.log('Channel closed'); };
 }
-GameCtrl.$inject = [];
+GameController.$inject = ["$scope", "$location"];
 
-function JudgeCtrl($scope, $location) {
+
+function JudgeController($scope, $location) {
   alert("Judging");
 }
-JudgeCtrl.$inject = [];
+JudgeController.$inject = ["$scope", "$location"];
+
+
+function HandController() {
+  alert("Hand");
+}
+HandController.$inject = [];
