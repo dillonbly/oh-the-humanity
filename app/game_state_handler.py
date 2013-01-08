@@ -1,6 +1,8 @@
 import json
 import logging
 import webapp2
+from google.appengine.api import channel
+from google.appengine.api import users
 
 
 class GameStateHandler(webapp2.RequestHandler):
@@ -11,14 +13,23 @@ class GameStateHandler(webapp2.RequestHandler):
 
     game_key = db.Key.from_path('Game', game_name)
     game = db.get(game_key)
-    logging.info('Found game: {0}'.format(game))
+    user = users.get_current_user()
+    logging.info('Player {0} connecting to game: {1}'.format(game.id(), user.nickname())
 
-    players = []
-    current_hand = []
+    token = channel.create_channel("{0}:{1}".format(game_name, user.user_id()))
+
+    players = Player.all().ancestor(game).run()
+    for player in players:
+      if player.user == user:
+        this_player = player
+
+    if not this_player:
+      raise Exception("Player not found: {0}".format(user.nickname())
+
     gamestate = {
       "players": players,
-      "current_hand": current_hand,
-      "player_turn": 1
+      "current_hand": this_player.cards
+      "player_turn": game.player_turn
     }
 
     self.response.write(json.dumps(gamestate))
