@@ -33,7 +33,9 @@ class JoinGameHandler(webapp2.RequestHandler):
     player = Player(user=user, parent=game)
     player.put()
 
-    self.redirect("/game#gamename={0}".format(game.key().id_or_name()))
+    token = channel.create_channel("{0}:{1}".format(game_name, user.user_id()))
+
+    self.redirect("/game#?gamename={0}&token={1}".format(game.key().id_or_name(), token))
 
 
 app = webapp2.WSGIApplication([

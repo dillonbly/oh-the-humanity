@@ -2,11 +2,18 @@
 
 /* Controllers */
 
-
-function MyCtrl1() {}
-MyCtrl1.$inject = [];
-
-
-function MyCtrl2() {
+function GameCtrl($scope, $location) {
+  alert($location.search.token);
+  channel = new goog.appengine.Channel($location.search.token);
+  socket = channel.open();
+  socket.onopen = console.log;
+  socket.onmessage = console.log;
+  socket.onerror = console.log;
+  socket.onclose = console.log;
 }
-MyCtrl2.$inject = [];
+GameCtrl.$inject = [];
+
+function JudgeCtrl($scope, $location) {
+  alert("Judging");
+}
+JudgeCtrl.$inject = [];
