@@ -3,6 +3,9 @@ version: 1
 runtime: python27
 api_version: 1
 threadsafe: yes
+inbound_services:
+- channel_presence
+
 
 handlers:
 - url: /favicon\.ico
@@ -37,6 +40,14 @@ handlers:
 - url: /gamestate
   script: game_state_handler.app
   login: required
+
+- url: /html/(.*)
+  static_files: html/\1
+  upload: html/(.*)
+
+- url: /client_data/(.*)
+  static_files: client_data/\1
+  upload: client_data/(.*)
 
 - url: /
   static_files: html/join_game.html
