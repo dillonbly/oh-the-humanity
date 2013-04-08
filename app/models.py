@@ -47,6 +47,14 @@ class Card:
   def __repr__(self):
     return self.__str__()
 
+  def dict(self):
+    '''Aids JSON serialization'''
+    return {
+      "id": self.id,
+      "text": self.text,
+      "num_answers": self.num_answers()
+    }
+
 
 class BlackCards:
   '''Question Card'''

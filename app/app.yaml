@@ -41,13 +41,12 @@ handlers:
   script: game_state_handler.app
   login: required
 
+- url: /card.json
+  script: card_handler.app
+
 - url: /html/(.*)
   static_files: html/\1
   upload: html/(.*)
-
-- url: /client_data/(.*)
-  static_files: client_data/\1
-  upload: client_data/(.*)
 
 - url: /
   static_files: html/join_game.html
