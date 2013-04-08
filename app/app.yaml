@@ -41,6 +41,10 @@ handlers:
   script: game_state_handler.app
   login: required
 
+- url: /playmove
+  script: play_move_handler.app
+  login: required
+
 - url: /card.json
   script: card_handler.app
 

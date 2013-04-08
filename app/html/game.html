@@ -7,12 +7,16 @@
 </head>
 <body ng-controller="GameController">
   <div ng-view>Welcome to Oh the Humanity.</div>
+  <!--
   <ul>
     <li ng-repeat="card in cards.black_cards">{{card}}</li>
   </ul>
   <ul>
     <li ng-repeat="card in cards.white_cards">{{card}}</li>
   </ul>
+
+  -->
+  <input type="button" value="End Turn" ng-click="endTurn()" />
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
